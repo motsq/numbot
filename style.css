@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
@@ -98,20 +99,20 @@ button:hover {
 }
 
 .number-pad button {
-    width: 60px;
-    height: 60px;
-    margin: 5px;
-    font-size: 24px;
-    background-color: #b29dd9;
-    color: black;
-    border: none;
-    border-radius: 10px;
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  font-size: 24px;
+  background-color: #b29dd9;
+  color: black;
+  border: none;
+  border-radius: 10px;
 }
 
 .number-pad {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 250px;
-    margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 250px;
+  margin: auto;
 }

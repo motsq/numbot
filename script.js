@@ -1,14 +1,6 @@
+
 let secretCode = generateCode();
 let attempt = 0;
-
-function createPad() {
-    for (let i = 0; i <= 9; i++) {
-        const btn = document.createElement('button');
-        btn.textContent = i;
-        btn.onclick = () => handleInput(i);
-        numberPad.appendChild(btn);
-    }
-}
 
 function generateCode() {
   let digits = [];
@@ -18,6 +10,7 @@ function generateCode() {
       digits.push(digit);
     }
   }
+  console.log("Kode Rahasia:", digits);
   return digits;
 }
 
@@ -41,6 +34,7 @@ function submitGuess() {
 
   if (result.correct === 4) {
     showMessage(`Kemenangan! Kode — ${secretCode.join("")}. Upaya yang digunakan: ${attempt}`);
+    disablePad();
   }
 
   document.getElementById("guessInput").value = "";
@@ -82,6 +76,7 @@ function resetGame() {
   document.getElementById("history").innerHTML = "";
   document.getElementById("message").classList.add("hidden");
   document.getElementById("guessInput").value = "";
+  enablePad();
 }
 
 function toggleMode() {
@@ -91,7 +86,7 @@ function toggleMode() {
 
 function addDigit(digit) {
   const input = document.getElementById("guessInput");
-  if (input.value.length < 4) {
+  if (input.value.length < 4 && !input.value.includes(digit)) {
     input.value += digit;
   }
 }
@@ -100,8 +95,29 @@ function clearInput() {
   document.getElementById("guessInput").value = "";
 }
 
+function disablePad() {
+  document.querySelectorAll(".number-pad button").forEach(btn => btn.disabled = true);
+}
+
+function enablePad() {
+  document.querySelectorAll(".number-pad button").forEach(btn => btn.disabled = false);
+}
+
+function createPad() {
+  const pad = document.getElementById("number-pad");
+  pad.innerHTML = "";
+  for (let i = 0; i <= 9; i++) {
+    const btn = document.createElement("button");
+    btn.textContent = i;
+    btn.onclick = () => addDigit(i);
+    pad.appendChild(btn);
+  }
+}
+
 document.getElementById("guessInput").addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     submitGuess();
   }
 });
+
+createPad();
