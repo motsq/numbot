@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NumBot</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="dark-mode">
+  <div class="container">
+    <div class="header">
+      <h1>NumBot</h1>
+      <p>Upaya: <span id="attempt">0</span></p>
+      <button onclick="toggleMode()" class="toggle-mode">🌓</button>
+    </div>
+
+    <div class="history" id="history"></div>
+
+    <div class="input-section">
+      <input type="text" id="guessInput" maxlength="4" placeholder="Masukkan 4 angka" />
+      <button onclick="submitGuess()">✔</button>
+        <div class="number-pad" id="number-pad"></div>
+        <button onclick="clearInput()">⌫</button>
+      </div>
+    </div>
+
+    <div id="message" class="message hidden"></div>
+    <button class="reset" onclick="resetGame()">🔄 Mainkan Lagi</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
